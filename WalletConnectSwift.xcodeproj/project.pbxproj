@@ -34,8 +34,8 @@
 		5520F7C32317C11F00D58B74 /* WalletConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5520F7C22317C11F00D58B74 /* WalletConnectTests.swift */; };
 		5520F7C52317C1A600D58B74 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5520F7C42317C1A600D58B74 /* Helpers.swift */; };
 		557CA9B424C1AD05009836F0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557CA9B324C1AD05009836F0 /* Logger.swift */; };
-		55B7819924A614470036F8E5 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55B7819824A614470036F8E5 /* CryptoSwift */; };
 		55B7819B24A614470036F8E5 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 55B7819A24A614470036F8E5 /* Starscream */; };
+		92AC697925810CC700318B4B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92AC697825810CC700318B4B /* CryptoSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B7819924A614470036F8E5 /* CryptoSwift in Frameworks */,
 				55B7819B24A614470036F8E5 /* Starscream in Frameworks */,
+				92AC697925810CC700318B4B /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,8 +233,8 @@
 			);
 			name = WalletConnectSwift;
 			packageProductDependencies = (
-				55B7819824A614470036F8E5 /* CryptoSwift */,
 				55B7819A24A614470036F8E5 /* Starscream */,
+				92AC697825810CC700318B4B /* CryptoSwift */,
 			);
 			productName = WalletConnectSwift;
 			productReference = 0A927850230BFB2600FDCC0D /* WalletConnectSwift.framework */;
@@ -286,8 +286,8 @@
 			);
 			mainGroup = 0ABB071B22FC22BA00BC18BB;
 			packageReferences = (
-				55B7819224A613F40036F8E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				55B7819524A614240036F8E5 /* XCRemoteSwiftPackageReference "Starscream" */,
+				92AC697725810CC700318B4B /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = 0ABB072522FC22BA00BC18BB /* Products */;
 			projectDirPath = "";
@@ -610,14 +610,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		55B7819224A613F40036F8E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		55B7819524A614240036F8E5 /* XCRemoteSwiftPackageReference "Starscream" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daltoniam/Starscream.git";
@@ -626,18 +618,26 @@
 				minimumVersion = 3.1.0;
 			};
 		};
+		92AC697725810CC700318B4B /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.3.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		55B7819824A614470036F8E5 /* CryptoSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 55B7819224A613F40036F8E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
-			productName = CryptoSwift;
-		};
 		55B7819A24A614470036F8E5 /* Starscream */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55B7819524A614240036F8E5 /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
+		};
+		92AC697825810CC700318B4B /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92AC697725810CC700318B4B /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
