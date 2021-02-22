@@ -24,9 +24,9 @@ public class Request {
         return payload.id
     }
 
-    private var payload: JSONRPC_2_0.Request
+    public var payload: JSONRPC_2_0.Request
 
-    internal init(payload: JSONRPC_2_0.Request, url: WCURL) {
+    public init(payload: JSONRPC_2_0.Request, url: WCURL) {
         self.payload = payload
         self.url = url
     }
