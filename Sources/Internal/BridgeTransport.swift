@@ -78,6 +78,7 @@ class Bridge: Transport {
         connections.forEach {
             $0.tearDown()        
         }
+        connections.removeAll()
     }
 
     private func releaseConnection(by url: WCURL) {
