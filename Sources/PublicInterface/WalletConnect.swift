@@ -49,6 +49,10 @@ open class WalletConnect {
         communicator.addPendingDisconnectSession(session)
         communicator.disconnect(from: session.url)
     }
+    
+    open func tearDown() {
+        communicator.tearDown()
+    }
 
     /// Get all sessions with active connection.
     ///

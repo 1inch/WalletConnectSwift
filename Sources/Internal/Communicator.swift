@@ -60,6 +60,10 @@ class Communicator {
     func removePendingDisconnectSession(by url: WCURL) {
         pendingDisconnectSessions.remove(url: url)
     }
+    
+    func tearDown() {
+        transport.tearDown()
+    }
 
     // MARK: - Transport
 

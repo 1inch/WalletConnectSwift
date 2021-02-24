@@ -39,6 +39,21 @@ class WebSocketConnection {
         socket.delegate = self
         socket.callbackQueue = serialCallbackQueue
     }
+    
+    func tearDown() {
+        socket.delegate = nil
+        socket.pongDelegate = nil
+        socket.advancedDelegate = nil
+        socket.onConnect = nil
+        socket.onDisconnect = nil
+        socket.onText = nil
+        socket.onData = nil
+        socket.onPong = nil
+        socket.onHttpResponseHeaders = nil
+        socket.respondToPingWithPong = false
+        let error = NSError(domain: "teardown", code: 0, userInfo: nil)
+        socket.streamDidError(error: error)
+    }
 
     func open() {
         socket.connect()

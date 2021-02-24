@@ -12,6 +12,7 @@ protocol Transport {
                 onTextReceive: @escaping (String, WCURL) -> Void)
     func isConnected(by url: WCURL) -> Bool
     func disconnect(from url: WCURL)
+    func tearDown()
 }
 
 // future: if we received response from another peer - then we call request.completion() for pending request.
@@ -70,6 +71,12 @@ class Bridge: Transport {
             if let connection = self.findConnection(url: url) {
                 connection.close()
             }
+        }
+    }
+    
+    func tearDown() {
+        connections.forEach {
+            $0.tearDown()        
         }
     }
 
