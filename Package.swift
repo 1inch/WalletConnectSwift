@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.0"),
-        .package(name: "Starscream", url: "https://github.com/daltoniam/Starscream.git", from: "3.1.0")
+        .package(name: "Starscream", url: "https://github.com/1inch/Starscream.git", from: "3.1.2")
     ],
     targets: [
         .target(
