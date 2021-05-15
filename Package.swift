@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
@@ -12,8 +12,8 @@ let package = Package(
             targets: ["WalletConnectSwift"])
     ],
     dependencies: [
-        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.3.8")),
-        .package(url: "https://github.com/daltoniam/Starscream.git", .upToNextMinor(from: "3.1.0"))
+        .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.0"),
+        .package(name: "Starscream", url: "https://github.com/daltoniam/Starscream.git", from: "3.1.0")
     ],
     targets: [
         .target(
@@ -21,6 +21,5 @@ let package = Package(
             dependencies: ["CryptoSwift", "Starscream"],
             path: "Sources"),
         .testTarget(name: "WalletConnectSwiftTests", dependencies: ["WalletConnectSwift"], path: "Tests"),
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )
