@@ -26,6 +26,9 @@ public protocol ServerDelegate: AnyObject {
 
     /// Called only when the session is updated with intention of the dAppt.
     func server(_ server: Server, didUpdate session: Session)
+    
+    /// Called on disconnect to make a decision to reconnect.
+    func server(_ server: Server, shouldReconnect session: Session) -> Bool
 }
 
 open class Server: WalletConnect {
@@ -125,6 +128,15 @@ open class Server: WalletConnect {
 
     override func didDisconnect(_ session: Session) {
         delegate?.server(self, didDisconnect: session)
+    }
+    
+    override func shouldReconnect(_ session: Session) -> Bool {
+        if let delegate = delegate {
+            return delegate.server(self, shouldReconnect: session)
+        }
+        else {
+            return false
+        }
     }
 
     /// thread-safe collection of RequestHandlers
