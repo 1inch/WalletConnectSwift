@@ -89,13 +89,18 @@ open class WalletConnect {
             failedToConnect(url)
             return
         }
-        // if a session was not initiated by the wallet or the dApp to disconnect, try to reconnect it.
-        guard communicator.pendingDisconnectSession(by: url) != nil else {
-            // TODO: should we notify delegate that we try to reconnect?
+        
+        let shouldReconnect = shouldReconnect(session)
+        if communicator.pendingDisconnectSession(by: url) == nil && shouldReconnect {
             LogService.shared.log("WC: trying to reconnect session by url: \(url.bridgeURL.absoluteString)")
             try! reconnect(to: session)
-            return
         }
+        else {
+            communicator.removeSession(by: url)
+            communicator.removePendingDisconnectSession(by: url)
+            didDisconnect(session)
+        }
+        
         communicator.removeSession(by: url)
         communicator.removePendingDisconnectSession(by: url)
         didDisconnect(session)
@@ -119,6 +124,10 @@ open class WalletConnect {
     }
 
     func didDisconnect(_ session: Session) {
+        preconditionFailure("Should be implemented in subclasses")
+    }
+    
+    func shouldReconnect(_ session: Session) -> Bool {
         preconditionFailure("Should be implemented in subclasses")
     }
 
