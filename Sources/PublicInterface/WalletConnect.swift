@@ -100,10 +100,6 @@ open class WalletConnect {
             communicator.removePendingDisconnectSession(by: url)
             didDisconnect(session)
         }
-        
-        communicator.removeSession(by: url)
-        communicator.removePendingDisconnectSession(by: url)
-        didDisconnect(session)
     }
 
     /// Process incomming text messages from the transport layer.
