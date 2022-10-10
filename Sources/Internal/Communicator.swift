@@ -48,6 +48,10 @@ class Communicator {
     func disconnect(from url: WCURL) {
         transport.disconnect(from: url)
     }
+    
+    func tearDown(from url: WCURL, closeCode: URLSessionWebSocketTask.CloseCode) {
+        transport.tearDown(from: url, closeCode: closeCode)
+    }
 
     func pendingDisconnectSession(by url: WCURL) -> Session? {
         return pendingDisconnectSessions.find(url: url)

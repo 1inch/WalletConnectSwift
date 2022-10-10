@@ -2,6 +2,8 @@
 //  Copyright © 2019 Gnosis Ltd. All rights reserved.
 //
 
+import Foundation
+
 open class WalletConnect {
     var communicator = Communicator()
 
@@ -48,6 +50,14 @@ open class WalletConnect {
         try sendDisconnectSessionRequest(for: session)
         communicator.addOrUpdatePendingDisconnectSession(session)
         communicator.disconnect(from: session.url)
+    }
+    
+    /// Force drop socket-connection w/o drop WC connection
+    open func tearDown(from session: Session, closeCode: URLSessionWebSocketTask.CloseCode) throws {
+        guard communicator.isConnected(by: session.url) else {
+            throw WalletConnectError.tryingToDisconnectInactiveSession
+        }
+        communicator.tearDown(from: session.url, closeCode: closeCode)
     }
 
     /// Get all sessions with active connection.
