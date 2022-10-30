@@ -83,6 +83,18 @@ open class Server: WalletConnect {
         let request = try Request(url: session.url, method: "wc_sessionUpdate", params: [walletInfo], id: nil)
         send(request)
     }
+    
+    /// Update session with new wallet info, additional to `updateSession()` logic forces update
+    /// local session object even w/o dapp sessionUpdate response
+    open func forceUpdateSession(_ updatedSession: Session) throws {
+        guard let walletInfo = updatedSession.walletInfo else {
+            throw ServerError.missingWalletInfoInSession
+        }
+        
+        try updateSession(updatedSession, with: walletInfo)
+        communicator.addOrUpdateSession(updatedSession)
+        delegate?.server(self, didUpdate: updatedSession)
+    }
 
     // TODO: where to handle error?
     open func send(_ response: Response) {
