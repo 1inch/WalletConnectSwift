@@ -1,10 +1,12 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.8
+
 import PackageDescription
 
 let package = Package(
     name: "WalletConnectSwift",
     platforms: [
-        .macOS(.v10_14), .iOS(.v13),
+        .macOS(.v12),
+        .iOS(.v15),
     ],
     products: [
         .library(
@@ -12,7 +14,7 @@ let package = Package(
             targets: ["WalletConnectSwift"])
     ],
     dependencies: [
-        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.5.1"))
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.7.2"))
     ],
     targets: [
         .target(
